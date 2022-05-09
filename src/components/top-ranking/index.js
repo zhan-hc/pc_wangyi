@@ -8,7 +8,6 @@ import { TopRankingWrapper } from './style'
 
 export default memo(function TopRanking(props) {
   // props and state
-  console.log(props, '============================')
   const { info } = props
   const { tracks = [] } = info
 

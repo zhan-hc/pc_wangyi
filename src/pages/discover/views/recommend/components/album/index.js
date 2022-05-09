@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { albumData } from '../../store/slices/album'
 import { Carousel } from 'antd'
 import AlbumCover from '@/components/album-cover'
-import HYThemeHeaderRCM from '@/components/theme-header-rcm'
+import ThemeHeaderRCM from '@/components/theme-header-rcm'
 import { AlbumWrapper } from './style'
 
 export default memo(function HYNewAlbum() {
@@ -19,7 +19,7 @@ export default memo(function HYNewAlbum() {
 
   return (
     <AlbumWrapper>
-      <HYThemeHeaderRCM title="新碟上架" />
+      <ThemeHeaderRCM title="新碟上架" />
       <div className="content">
         <button
           className="arrow arrow-left sprite_02"

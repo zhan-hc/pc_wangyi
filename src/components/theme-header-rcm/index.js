@@ -1,26 +1,24 @@
-import React, { memo } from 'react';
-import PropTypes from 'prop-types';
+import React, { memo } from 'react'
+import PropTypes from 'prop-types'
 
-import { HeaderWrapper } from './style';
+import { HeaderWrapper } from './style'
 
-const HYThemeHeaderRCM = memo(function(props) {
-  const { title, keywords } = props;
+const ThemeHeaderRCM = memo(function (props) {
+  const { title, keywords } = props
 
   return (
     <HeaderWrapper className="sprite_02">
       <div className="left">
         <h3 className="title">{title}</h3>
         <div className="keyword">
-          {
-            keywords.map((item, index) => {
-              return (
-                <div className="item" key={item}>
-                  <a href="todo">{item}</a>
-                  <span className="divider">|</span>
-                </div>
-              )
-            })
-          }
+          {keywords.map((item, index) => {
+            return (
+              <div className="item" key={item}>
+                <a href="todo">{item}</a>
+                <span className="divider">|</span>
+              </div>
+            )
+          })}
         </div>
       </div>
       <div className="right">
@@ -31,13 +29,13 @@ const HYThemeHeaderRCM = memo(function(props) {
   )
 })
 
-HYThemeHeaderRCM.propTypes = {
+ThemeHeaderRCM.propTypes = {
   title: PropTypes.string.isRequired,
-  keywords: PropTypes.array
+  keywords: PropTypes.array,
 }
 
-HYThemeHeaderRCM.defaultProps = {
-  keywords: []
+ThemeHeaderRCM.defaultProps = {
+  keywords: [],
 }
 
-export default HYThemeHeaderRCM;
+export default ThemeHeaderRCM

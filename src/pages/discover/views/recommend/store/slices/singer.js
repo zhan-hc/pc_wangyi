@@ -1,34 +1,31 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import request from '@/services/request'
 
-export const albumData = createAsyncThunk(
-  'recommend/getAlbum',
-  async (limit = 8) => {
+export const singerData = createAsyncThunk(
+  'recommend/getsinger',
+  async (params = { limit: 5, type: 1, area: 7 }) => {
     const res = await request({
-      url: '/top/album',
-      params: {
-        limit,
-      },
+      url: '/artist/list',
+      params,
     })
     return res // 此处的返回结果会在 .fulfilled中作为payload的值
   }
 )
 
-export const albumSlice = createSlice({
-  name: 'album',
+export const singerSlice = createSlice({
+  name: 'singer',
   initialState: {
-    newAlbums: [],
+    newSingers: [],
   },
-  reducers: {
-  },
+  reducers: {},
   extraReducers: {
-    [albumData.fulfilled](state, { payload }) {
-      state.newAlbums = payload.weekData
+    [singerData.fulfilled](state, { payload }) {
+      state.newSingers = payload.artists
     },
-    [albumData.rejected](state, err) {
+    [singerData.rejected](state, err) {
       console.log(err)
     },
-    [albumData.pending](state) {
+    [singerData.pending](state) {
       console.log('进行中')
     },
   },

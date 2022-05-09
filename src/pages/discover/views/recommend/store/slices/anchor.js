@@ -1,11 +1,11 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import request from '@/services/request'
 
-export const albumData = createAsyncThunk(
-  'recommend/getAlbum',
-  async (limit = 8) => {
+export const anchorData = createAsyncThunk(
+  'recommend/getanchor',
+  async (limit = 5) => {
     const res = await request({
-      url: '/top/album',
+      url: '/dj/toplist/hours',
       params: {
         limit,
       },
@@ -14,21 +14,20 @@ export const albumData = createAsyncThunk(
   }
 )
 
-export const albumSlice = createSlice({
-  name: 'album',
+export const anchorSlice = createSlice({
+  name: 'anchor',
   initialState: {
-    newAlbums: [],
+    hotAnchors: [],
   },
-  reducers: {
-  },
+  reducers: {},
   extraReducers: {
-    [albumData.fulfilled](state, { payload }) {
-      state.newAlbums = payload.weekData
+    [anchorData.fulfilled](state, { payload }) {
+      state.hotAnchors = payload.data.list
     },
-    [albumData.rejected](state, err) {
+    [anchorData.rejected](state, err) {
       console.log(err)
     },
-    [albumData.pending](state) {
+    [anchorData.pending](state) {
       console.log('进行中')
     },
   },
